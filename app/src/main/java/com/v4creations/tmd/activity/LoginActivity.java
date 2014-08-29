@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.dd.CircularProgressButton;
 import com.google.android.gms.auth.GoogleAuthException;
 import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.auth.GooglePlayServicesAvailabilityException;
@@ -23,15 +24,21 @@ import com.v4creations.tmd.utils.C;
 
 import java.io.IOException;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
 public class LoginActivity extends Activity {
 
     private String mEmail, mToken;
+    @InjectView(R.id.btnGooglePlus)
+    CircularProgressButton googlePlusButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        startLogin();
+        ButterKnife.inject(this);
     }
 
     @Override
@@ -46,7 +53,12 @@ public class LoginActivity extends Activity {
         TMDEventBus.getBus().register(this);
     }
 
-    private void startLogin() {
+    @OnClick(R.id.btnGooglePlus)
+    public void startLogin(CircularProgressButton button) {
+        button.setIndeterminateProgressMode(true);
+        button.setProgress(0);
+        button.setProgress(50);
+        button.setClickable(false);
         Intent googlePicker = AccountPicker.newChooseAccountIntent(null, null,
                 new String[]{GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE}, true, null, null, null, null);
         startActivityForResult(googlePicker, C.Intent.PICK_ACCOUNT_REQUEST);
@@ -63,6 +75,9 @@ public class LoginActivity extends Activity {
                 getToken();
             }
             return;
+        }else{
+            googlePlusButton.setProgress(0);
+            onSocialLoginComplete(null);
         }
     }
 
@@ -93,7 +108,7 @@ public class LoginActivity extends Activity {
                 if (token != null) {
                     socialLogin();
                 } else
-                    stopLoading();
+                    onSocialLoginError(null);
             }
         }.execute(mEmail);
     }
@@ -105,21 +120,20 @@ public class LoginActivity extends Activity {
     @Subscribe
     public void onSocialLogin(User user) {
         Toast.makeText(getApplicationContext(), user.getName(), Toast.LENGTH_SHORT).show();
+        googlePlusButton.setProgress(100);
     }
 
     @Subscribe
     public void onSocialLoginError(APIEventError<User> error) {
-        if (error.getRetrofitError().getResponse().getStatus() == 424) {
+        if (error != null && error.getRetrofitError().getResponse() != null && error.getRetrofitError().getResponse().getStatus() == 424) {
             GoogleAuthUtil.invalidateToken(getApplicationContext(), mToken);
             mToken = null;
         }
+        googlePlusButton.setProgress(-1);
     }
 
     @Subscribe
-    public void onSocialLoginComplete(EventCompleate<User> e) {
-        stopLoading();
-    }
-
-    private void stopLoading() {
+    public void onSocialLoginComplete(EventCompleate<User> event){
+        googlePlusButton.setClickable(true);
     }
 }
