@@ -4,10 +4,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.google.gson.Gson;
+import com.v4creations.tmd.model.User;
+
 public class Settings {
     private static final String PREFS_COOKIE = "cookie";
     private static final String PREFS_GCM_REGISTRATION_ID = "gcm_registration_id";
     private static final String PREFS_APP_LAST_VERSION = "app_last_version";
+    private static final String PREFS_USER = "user";
 
     private static SharedPreferences prefs;
     private static Context mContext;
@@ -26,6 +30,7 @@ public class Settings {
             new RuntimeException("Settings not initialized");
         return prefs;
     }
+
     private static Context getContext() {
         getInstance();
         return mContext;
@@ -35,6 +40,8 @@ public class Settings {
         SharedPreferences.Editor edit = getInstance().edit();
         edit.putString(PREFS_COOKIE, cookie);
         edit.commit();
+        if (cookie == null)
+            setUser(null);
     }
 
     public static String getGCMRegistrationId() {
@@ -59,6 +66,22 @@ public class Settings {
 
     public static String getCookie() {
         return getInstance().getString(PREFS_COOKIE, null);
+    }
+
+    public static void setUser(User user) {
+        String userJson = null;
+        if (user != null)
+            userJson = new Gson().toJson(user);
+        SharedPreferences.Editor edit = getInstance().edit();
+        edit.putString(PREFS_USER, userJson);
+        edit.commit();
+    }
+
+    public static User getUser() {
+        String user = getInstance().getString(PREFS_COOKIE, null);
+        if (user == null)
+            return null;
+        return new Gson().fromJson(user, User.class);
     }
 
 }

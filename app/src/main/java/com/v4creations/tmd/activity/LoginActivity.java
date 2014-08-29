@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.GoogleAuthException;
@@ -13,27 +12,38 @@ import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.auth.GooglePlayServicesAvailabilityException;
 import com.google.android.gms.auth.UserRecoverableAuthException;
 import com.google.android.gms.common.AccountPicker;
+import com.squareup.otto.Subscribe;
 import com.v4creations.tmd.R;
-import com.v4creations.tmd.api.APICallback;
-import com.v4creations.tmd.api.RESTClient;
-import com.v4creations.tmd.model.SocialLogin;
+import com.v4creations.tmd.api.API;
+import com.v4creations.tmd.api.APIEventError;
+import com.v4creations.tmd.event.EventCompleate;
+import com.v4creations.tmd.event.TMDEventBus;
 import com.v4creations.tmd.model.User;
 import com.v4creations.tmd.utils.C;
 
 import java.io.IOException;
 
-import retrofit.RetrofitError;
-import retrofit.client.Response;
-
 public class LoginActivity extends Activity {
 
-    private String mEmail;
+    private String mEmail, mToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         startLogin();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        TMDEventBus.getBus().register(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        TMDEventBus.getBus().register(this);
     }
 
     private void startLogin() {
@@ -79,30 +89,35 @@ public class LoginActivity extends Activity {
             @Override
             protected void onPostExecute(String token) {
                 super.onPostExecute(token);
+                mToken = token;
                 if (token != null) {
-                    login(token);
+                    socialLogin();
                 } else
                     stopLoading();
             }
         }.execute(mEmail);
     }
 
-    private void login(final String token) {
-        RESTClient.getService().socialLogin(new SocialLogin(token), new APICallback<User>() {
-            @Override
-            public void success(User user, Response response) {
-                super.success(user, response);
-                Toast.makeText(getApplicationContext(), user.getName(), Toast.LENGTH_SHORT).show();
-            }
+    private void socialLogin() {
+        API.socialLogin(mToken);
+    }
 
-            @Override
-            public void failure(RetrofitError retrofitError) {
-                Log.e("TAG", "Error " + retrofitError.getMessage() + " status : " + retrofitError.getResponse().getStatus());
-                if (retrofitError.getResponse().getStatus() == 424) {
-                    GoogleAuthUtil.invalidateToken(getApplicationContext(), token);
-                }
-            }
-        });
+    @Subscribe
+    public void onSocialLogin(User user) {
+        Toast.makeText(getApplicationContext(), user.getName(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Subscribe
+    public void onSocialLoginError(APIEventError<User> error) {
+        if (error.getRetrofitError().getResponse().getStatus() == 424) {
+            GoogleAuthUtil.invalidateToken(getApplicationContext(), mToken);
+            mToken = null;
+        }
+    }
+
+    @Subscribe
+    public void onSocialLoginComplete(EventCompleate<User> e) {
+        stopLoading();
     }
 
     private void stopLoading() {

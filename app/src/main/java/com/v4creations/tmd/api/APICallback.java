@@ -4,6 +4,7 @@ package com.v4creations.tmd.api;
 import com.v4creations.tmd.utils.Settings;
 
 import retrofit.Callback;
+import retrofit.RetrofitError;
 import retrofit.client.Header;
 import retrofit.client.Response;
 
@@ -18,5 +19,13 @@ public abstract class APICallback<T> implements Callback<T> {
             }
         }
         Settings.setCookie(cookie);
+        complete();
+    }
+
+    public abstract void complete();
+
+    @Override
+    public void failure(RetrofitError retrofitError) {
+        complete();
     }
 }
