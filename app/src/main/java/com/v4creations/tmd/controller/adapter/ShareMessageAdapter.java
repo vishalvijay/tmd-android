@@ -29,9 +29,14 @@ public class ShareMessageAdapter extends BaseArrayAdapter<ShareMessage> {
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         }
-        ShareMessage shareMessage = (ShareMessage) getItem(position);
-        holder.message.setText(((ShareMessage) getItem(position)).getMessage());
+        ShareMessage shareMessage = getItem(position);
+        holder.message.setText(shareMessage.getMessage());
         return convertView;
+    }
+
+    @Override
+    public ShareMessage getItem(int position) {
+        return (ShareMessage) super.getItem(position);
     }
 
     static class ViewHolder {

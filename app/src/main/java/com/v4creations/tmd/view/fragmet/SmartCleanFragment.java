@@ -14,6 +14,8 @@ import com.v4creations.tmd.system.event.TMDEventBus;
 
 import java.util.ArrayList;
 
+import de.timroes.android.listview.EnhancedListView;
+
 public class SmartCleanFragment extends ListFragment {
     private ShareMessageAdapter mAdapter;
 
@@ -30,6 +32,32 @@ public class SmartCleanFragment extends ListFragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_smart_message,
                 container, false);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        EnhancedListView enhancedListView = (EnhancedListView) getListView();
+        enhancedListView.setDismissCallback(new EnhancedListView.OnDismissCallback() {
+            @Override
+            public EnhancedListView.Undoable onDismiss(EnhancedListView enhancedListView, final int position) {
+                final ShareMessage shareMessage = mAdapter.getItem(position);
+                mAdapter.remove(shareMessage);
+                return new EnhancedListView.Undoable() {
+                    @Override
+                    public void undo() {
+                        mAdapter.insert(shareMessage, position);
+                    }
+
+                    @Override
+                    public void discard() {
+                        super.discard();
+                        shareMessage.delete();
+                    }
+                };
+            }
+        });
+        enhancedListView.enableSwipeToDismiss();
     }
 
     @Override
