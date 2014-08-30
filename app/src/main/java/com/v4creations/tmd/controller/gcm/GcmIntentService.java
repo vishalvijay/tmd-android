@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.v4creations.tmd.model.ShareMessage;
+import com.v4creations.tmd.system.event.TMDEventBus;
 
 public class GcmIntentService extends IntentService {
     public GcmIntentService() {
@@ -24,6 +25,7 @@ public class GcmIntentService extends IntentService {
                 ShareMessage sm = new ShareMessage(extras.getString("title") , extras.getString("message"), extras.getString("type"));
                 sm.save();
                 sm.showNotification(getApplicationContext());
+                TMDEventBus.getBus().post(sm);
             }
         }
         GcmBroadcastReceiver.completeWakefulIntent(intent);

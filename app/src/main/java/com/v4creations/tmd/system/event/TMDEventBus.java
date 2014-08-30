@@ -4,10 +4,10 @@ import com.squareup.otto.Bus;
 
 public class TMDEventBus {
     private static TMDEventBus tmdEventBus;
-    private Bus mBus;
+    private MainThreadBus mBus;
 
     private TMDEventBus() {
-        mBus = new Bus();
+        mBus = new MainThreadBus();
     }
 
     public static TMDEventBus getInstance() {
@@ -20,7 +20,7 @@ public class TMDEventBus {
         return getInstance().getEventBus();
     }
 
-    private Bus getEventBus() {
+    private MainThreadBus getEventBus() {
         return mBus;
     }
 }

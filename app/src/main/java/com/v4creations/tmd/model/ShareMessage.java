@@ -4,11 +4,17 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v4.app.NotificationCompat;
 
 import com.orm.SugarRecord;
 import com.v4creations.tmd.R;
+import com.v4creations.tmd.system.event.TMDEventBus;
 import com.v4creations.tmd.view.activity.TMDMainActivity;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class ShareMessage extends SugarRecord<ShareMessage> {
     private String message, type, title;
@@ -29,6 +35,22 @@ public class ShareMessage extends SugarRecord<ShareMessage> {
 
     public String getType() {
         return type;
+    }
+
+    public static void loadShareMessages() {
+        new AsyncTask<Void, Void, List<ShareMessage>>() {
+            @Override
+            protected List<ShareMessage> doInBackground(Void[] objects) {
+                return ShareMessage.listAll(ShareMessage.class);
+            }
+
+            @Override
+            protected void onPostExecute(List<ShareMessage> shareMessages) {
+                super.onPostExecute(shareMessages);
+                Collections.reverse(shareMessages);
+                TMDEventBus.getBus().post(new ArrayList<ShareMessage>(shareMessages));
+            }
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     public void showNotification(Context context) {
