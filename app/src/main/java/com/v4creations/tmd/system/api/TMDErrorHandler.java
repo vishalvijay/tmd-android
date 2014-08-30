@@ -1,9 +1,10 @@
-package com.v4creations.tmd.api;
+package com.v4creations.tmd.system.api;
 
 import android.content.Intent;
+import android.support.v4.content.IntentCompat;
 
-import com.v4creations.tmd.activity.LoginActivity;
 import com.v4creations.tmd.utils.Settings;
+import com.v4creations.tmd.view.activity.LoginActivity;
 
 import retrofit.ErrorHandler;
 import retrofit.RetrofitError;
@@ -23,6 +24,7 @@ public class TMDErrorHandler implements ErrorHandler {
 
     private void openLoginAcitivity() {
         Intent i = new Intent(RESTClient.getContext(), LoginActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
         RESTClient.getContext().startActivity(i);
     }
 }

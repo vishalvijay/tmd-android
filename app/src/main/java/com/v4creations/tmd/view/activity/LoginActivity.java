@@ -1,11 +1,10 @@
-package com.v4creations.tmd.activity;
+package com.v4creations.tmd.view.activity;
 
 import android.accounts.AccountManager;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.dd.CircularProgressButton;
 import com.google.android.gms.auth.GoogleAuthException;
@@ -15,11 +14,11 @@ import com.google.android.gms.auth.UserRecoverableAuthException;
 import com.google.android.gms.common.AccountPicker;
 import com.squareup.otto.Subscribe;
 import com.v4creations.tmd.R;
-import com.v4creations.tmd.api.API;
-import com.v4creations.tmd.api.APIEventError;
-import com.v4creations.tmd.event.EventCompleate;
-import com.v4creations.tmd.event.TMDEventBus;
+import com.v4creations.tmd.controller.API;
 import com.v4creations.tmd.model.User;
+import com.v4creations.tmd.system.api.APIEventError;
+import com.v4creations.tmd.system.event.EventCompleate;
+import com.v4creations.tmd.system.event.TMDEventBus;
 import com.v4creations.tmd.utils.C;
 
 import java.io.IOException;
@@ -75,7 +74,7 @@ public class LoginActivity extends Activity {
                 getToken();
             }
             return;
-        }else{
+        } else {
             googlePlusButton.setProgress(0);
             onSocialLoginComplete(null);
         }
@@ -119,8 +118,14 @@ public class LoginActivity extends Activity {
 
     @Subscribe
     public void onSocialLogin(User user) {
-        Toast.makeText(getApplicationContext(), user.getName(), Toast.LENGTH_SHORT).show();
         googlePlusButton.setProgress(100);
+        openMainActivity();
+    }
+
+    private void openMainActivity() {
+        Intent i = new Intent(getApplicationContext(), TMDMainActivity.class);
+        startActivity(i);
+        finish();
     }
 
     @Subscribe
@@ -133,7 +138,7 @@ public class LoginActivity extends Activity {
     }
 
     @Subscribe
-    public void onSocialLoginComplete(EventCompleate<User> event){
+    public void onSocialLoginComplete(EventCompleate<User> event) {
         googlePlusButton.setClickable(true);
     }
 }

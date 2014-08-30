@@ -8,5 +8,8 @@
     <string name="title_activity_login">Login</string>
     <string name="internet_error">No Internet Connection</string>
     <string name="failed_to_register_gcm">Failed to register gcm</string>
+    <string name="title_activity_share_message">TMD</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

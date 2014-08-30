@@ -1,4 +1,4 @@
-package com.v4creations.tmd.event;
+package com.v4creations.tmd.system.event;
 
 import com.squareup.otto.Bus;
 

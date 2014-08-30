@@ -1,4 +1,4 @@
-package com.v4creations.tmd.activity;
+package com.v4creations.tmd.view.activity;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -12,6 +12,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.v4creations.tmd.R;
+import com.v4creations.tmd.model.User;
 import com.v4creations.tmd.utils.C;
 import com.v4creations.tmd.utils.Settings;
 import com.v4creations.tmd.utils.SystemFeatureChecker;
@@ -67,7 +68,10 @@ public class SplashScreenActivity extends Activity {
             @Override
             public void run() {
                 if (!isClosed) {
-                    startActivity(new Intent(getApplicationContext(), LoginActivity.class
+                    Class activityToOpen = LoginActivity.class;
+                    if (User.isLoggedIn())
+                        activityToOpen = TMDMainActivity.class;
+                    startActivity(new Intent(getApplicationContext(), activityToOpen
                     ));
                 }
             }
