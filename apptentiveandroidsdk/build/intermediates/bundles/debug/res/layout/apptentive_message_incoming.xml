@@ -46,7 +46,7 @@
                   android:textSize="9sp"
                   android:textStyle="bold"
                   android:textColor="@color/apptentive_message_center_timestamp"
-                  android:layout_alignParentRight="true"
+                  android:layout_alignParentLeft="true"
                   android:layout_below="@id/apptentive_message_body"/>
     </RelativeLayout>
 </LinearLayout><!-- From: file:/home/v4/dev/git-repos/tmd-android/apptentiveandroidsdk/src/main/res/layout/apptentive_message_incoming.xml -->

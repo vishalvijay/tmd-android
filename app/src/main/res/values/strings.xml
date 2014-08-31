@@ -17,4 +17,6 @@
     <string name="title_activity_about">About</string>
     <string name="rate_us">Rate us</string>
     <string name="chat">Chat</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

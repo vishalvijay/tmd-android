@@ -12,7 +12,4 @@
               android:layout_height="wrap_content"
               android:orientation="vertical"
               android:onClick="showAboutActivity">
-    <FrameLayout android:layout_width="fill_parent"
-                 android:layout_height="4dp"
-                 android:background="@color/apptentive_survey_separator"/>
 </LinearLayout><!-- From: file:/home/v4/dev/git-repos/tmd-android/apptentiveandroidsdk/src/main/res/layout/apptentive_branding.xml -->

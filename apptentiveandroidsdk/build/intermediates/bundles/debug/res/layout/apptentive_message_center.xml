@@ -78,21 +78,8 @@
         </LinearLayout>
         <FrameLayout android:id="@+id/apptentive_branding_view"
                      android:layout_width="fill_parent"
-                     android:layout_height="24dp"
+                     android:layout_height="wrap_content"
                      android:background="@android:color/black">
-            <RelativeLayout android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:gravity="bottom|center_horizontal">
-                <TextView android:id="@+id/apptentive_message_center_powered_by_text"
-                          android:layout_width="wrap_content"
-                          android:layout_height="fill_parent"
-                          android:gravity="bottom"
-                          android:paddingBottom="4dp"
-                          android:paddingRight="4dp"
-                          android:textSize="12sp"
-                          android:textColor="#CCCCCC"
-                          android:text="Powered by"/>
-            </RelativeLayout>
         </FrameLayout>
     </LinearLayout>
 </FrameLayout><!-- From: file:/home/v4/dev/git-repos/tmd-android/apptentiveandroidsdk/src/main/res/layout/apptentive_message_center.xml -->
