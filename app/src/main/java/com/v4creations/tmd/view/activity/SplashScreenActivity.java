@@ -1,6 +1,5 @@
 package com.v4creations.tmd.view.activity;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -20,7 +19,7 @@ import com.v4creations.tmd.utils.SystemFeatureChecker;
 import java.io.IOException;
 
 
-public class SplashScreenActivity extends Activity {
+public class SplashScreenActivity extends BaseActivity {
     private boolean isClosed = false;
     private GoogleCloudMessaging gcm;
 

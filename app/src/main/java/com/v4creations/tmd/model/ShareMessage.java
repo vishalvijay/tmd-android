@@ -17,16 +17,17 @@ import java.util.Collections;
 import java.util.List;
 
 public class ShareMessage extends SugarRecord<ShareMessage> {
-    private String message, type, title;
+    private String message, type, title, at;
 
     public ShareMessage() {
 
     }
 
-    public ShareMessage(String title, String message, String type) {
+    public ShareMessage(String title, String message, String type, String at) {
         this.message = message;
         this.type = type;
         this.title = title;
+        this.at= at;
     }
 
     public String getMessage() {
@@ -35,6 +36,10 @@ public class ShareMessage extends SugarRecord<ShareMessage> {
 
     public String getType() {
         return type;
+    }
+
+    public String getAt() {
+        return at;
     }
 
     public static void loadShareMessages() {

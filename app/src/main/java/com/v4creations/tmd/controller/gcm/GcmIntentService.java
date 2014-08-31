@@ -22,7 +22,7 @@ public class GcmIntentService extends IntentService {
         if (!extras.isEmpty()) {
             if (GoogleCloudMessaging.
                     MESSAGE_TYPE_MESSAGE.equals(messageType)) {
-                ShareMessage sm = new ShareMessage(extras.getString("title") , extras.getString("message"), extras.getString("type"));
+                ShareMessage sm = new ShareMessage(extras.getString("title"), extras.getString("message"), extras.getString("type"), extras.getString("at"));
                 sm.save();
                 sm.showNotification(getApplicationContext());
                 TMDEventBus.getBus().post(sm);

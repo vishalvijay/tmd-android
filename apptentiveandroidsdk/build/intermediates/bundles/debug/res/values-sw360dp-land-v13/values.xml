@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/home/v4/dev/git-repos/tmd-android/apptentiveandroidsdk/src/main/res/values-sw360dp-land/dimensions.xml -->
+    <eat-comment />
+
+    <dimen name="apptentive_activity_side_padding">126dp</dimen>
+    <dimen name="apptentive_activity_vertical_padding">0dp</dimen>
+    <dimen name="apptentive_dialog_side_padding">126dp</dimen>
+    <dimen name="apptentive_dialog_vertical_padding">0dp</dimen>
+
+</resources>

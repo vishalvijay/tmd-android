@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/home/v4/dev/git-repos/tmd-android/apptentiveandroidsdk/src/main/res/values/colors.xml -->
+    <eat-comment />
+
+    <color name="apptentive_about_link">#004444</color>
+    <color name="apptentive_about_text">#000000</color>
+    <color name="apptentive_about_title">#000000</color>
+    <color name="apptentive_about_version">#AAAAAA</color>
+    <color name="apptentive_activity_background">#FFFFFF</color>
+    <color name="apptentive_activity_frame">#99000000</color>
+    <color name="apptentive_branding_text">#000000</color>
+    <color name="apptentive_dialog_background">#FFFFFF</color>
+    <color name="apptentive_dialog_body_text">#444444</color>
+    <color name="apptentive_dialog_button_negative">#DDDDDD</color>
+    <color name="apptentive_dialog_button_negative_border_focused">#25A5CF</color>
+    <color name="apptentive_dialog_button_negative_disabled">#EBEBEB</color>
+    <color name="apptentive_dialog_button_negative_disabled_text">#B9B9B9</color>
+    <color name="apptentive_dialog_button_negative_focused">#B3B3B3</color>
+    <color name="apptentive_dialog_button_negative_focused_text">#000000</color>
+    <color name="apptentive_dialog_button_negative_pressed">#B3B3B3</color>
+    <color name="apptentive_dialog_button_negative_pressed_text">#000000</color>
+    <color name="apptentive_dialog_button_negative_text">#000000</color>
+    <color name="apptentive_dialog_button_positive">#56B8D8</color>
+    <color name="apptentive_dialog_button_positive_border_focused">#00769D</color>
+    <color name="apptentive_dialog_button_positive_disabled">#D6E9F0</color>
+    <color name="apptentive_dialog_button_positive_disabled_text">#9BB8C2</color>
+    <color name="apptentive_dialog_button_positive_focused">#2699BF</color>
+    <color name="apptentive_dialog_button_positive_focused_text">#000000</color>
+    <color name="apptentive_dialog_button_positive_pressed">#2699BF</color>
+    <color name="apptentive_dialog_button_positive_pressed_text">#000000</color>
+    <color name="apptentive_dialog_button_positive_text">#000000</color>
+    <color name="apptentive_dialog_form_text">#000000</color>
+    <color name="apptentive_dialog_title_text">#000000</color>
+    <color name="apptentive_message_auto_separator">#BBBBBB</color>
+    <color name="apptentive_message_auto_text">#000000</color>
+    <color name="apptentive_message_center_header_background">#222222</color>
+    <color name="apptentive_message_center_header_text">#FFFFFF</color>
+    <color name="apptentive_message_center_header_text_shadow">#AAFFFFFF</color>
+    <color name="apptentive_message_center_main_area_background">#E0E0E0</color>
+    <color name="apptentive_message_center_timestamp">#999999</color>
+    <color name="apptentive_message_sender_text">#222222</color>
+    <color name="apptentive_survey_answer_text">#000000</color>
+    <color name="apptentive_survey_content_background">#D7D7D7</color>
+    <color name="apptentive_survey_footer_background">@android:color/transparent</color>
+    <color name="apptentive_survey_question_answer_text">#000000</color>
+    <color name="apptentive_survey_question_background">#FFFFFF</color>
+    <color name="apptentive_survey_question_instruction_background_invalid">#EEDDDD</color>
+    <color name="apptentive_survey_question_instruction_background_valid">#D6E9F0</color>
+    <color name="apptentive_survey_question_instruction_text">#000000</color>
+    <color name="apptentive_survey_question_instruction_text_invalid">#BB6F6F</color>
+    <color name="apptentive_survey_question_instruction_text_valid">#56B8D8</color>
+    <color name="apptentive_survey_question_separator">#DDDDDD</color>
+    <color name="apptentive_survey_question_text">#000000</color>
+    <color name="apptentive_survey_separator">#56B8D8</color>
+    <color name="apptentive_survey_thank_you_dialog_border">#56B8D8</color>
+    <color name="apptentive_survey_title_text">#000000</color>
+    <color name="apptentive_text_message_text">#000000</color>
+    <!-- From: file:/home/v4/dev/git-repos/tmd-android/apptentiveandroidsdk/src/main/res/values/dimensions.xml -->
+    <eat-comment />
+
+    <dimen name="apptentive_activity_side_padding">0dp</dimen>
+    <dimen name="apptentive_activity_vertical_padding">0dp</dimen>
+    <dimen name="apptentive_dialog_body_text">@dimen/apptentive_text_medium</dimen>
+    <dimen name="apptentive_dialog_button_text">@dimen/apptentive_text_medium</dimen>
+    <dimen name="apptentive_dialog_side_padding">0dp</dimen>
+    <dimen name="apptentive_dialog_title_text">@dimen/apptentive_text_large</dimen>
+    <dimen name="apptentive_dialog_vertical_padding">0dp</dimen>
+    <dimen name="apptentive_text_large">22sp</dimen>
+    <dimen name="apptentive_text_medium">18sp</dimen>
+    <dimen name="apptentive_text_medium_large">20sp</dimen>
+    <dimen name="apptentive_text_medium_small">16sp</dimen>
+    <dimen name="apptentive_text_small">14sp</dimen>
+    <dimen name="apptentive_text_small_tiny">12sp</dimen>
+    <!-- From: file:/home/v4/dev/git-repos/tmd-android/apptentiveandroidsdk/src/main/res/values/ids.xml -->
+    <eat-comment />
+
+    <item name="apptentive_message_center_view" type="id"/>
+    <!-- From: file:/home/v4/dev/git-repos/tmd-android/apptentiveandroidsdk/src/main/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="apptentive_about_description">Apptentive is a feedback and communication service which allows the people who make this app to quickly get your feedback and better listen to you.</string>
+    <string name="apptentive_about_description_link">Find out more at apptentive.com</string>
+    <string name="apptentive_about_privacy">Your feedback is hosted by Apptentive and is subject to Apptentive\'s privacy policy and the privacy policy of the developer of this app.</string>
+    <string name="apptentive_about_privacy_link">Visit Apptentive\'s Privacy Policy</string>
+    <string name="apptentive_about_title">About Apptentive</string>
+    <string name="apptentive_developer">Developer</string>
+    <string name="apptentive_dialog_email_validation_failed_body">Please enter a valid email address.</string>
+    <string name="apptentive_dialog_email_validation_failed_title">Invalid Email Address</string>
+    <string name="apptentive_do_you_love_this_app">Do you love %s?</string>
+    <string name="apptentive_edittext_hint_email">Your Email Address</string>
+    <string name="apptentive_edittext_hint_email_required">Email Address (required)</string>
+    <string name="apptentive_give_feedback">Give Feedback</string>
+    <string name="apptentive_intro_dialog_body">Please let us know how to make %s better for you!</string>
+    <string name="apptentive_intro_dialog_edittext_hint">Tell us how we can help. (required)</string>
+    <string name="apptentive_intro_dialog_title_default">Thanks for your feedback!</string>
+    <string name="apptentive_intro_dialog_title_no_love">@string/apptentive_were_sorry</string>
+    <string name="apptentive_message_auto_body_manual">This is our Message Center. If you have questions, suggestions, concerns, or just want to get in touch, please send us a message. We love talking with our customers!</string>
+    <string name="apptentive_message_auto_body_no_love">What can we do to ensure that you love our app? We appreciate your constructive feedback.</string>
+    <string name="apptentive_message_center_attachment_title">Send image?</string>
+    <string name="apptentive_message_center_compose_hint">Type a message…</string>
+    <string name="apptentive_message_center_title">Message Center</string>
+    <string name="apptentive_message_sent_timestamp_format">MMM dd, yyyy h:mma</string>
+    <string name="apptentive_no">No</string>
+    <string name="apptentive_no_thanks">No thanks</string>
+    <string name="apptentive_ok">OK</string>
+    <string name="apptentive_oops">Oops!</string>
+    <string name="apptentive_optional">Optional</string>
+    <string name="apptentive_powered_by_apptentive">Powered by Apptentive</string>
+    <string name="apptentive_rate_this_app">Rate %s</string>
+    <string name="apptentive_rating_error">We\'re unable to find this app in the store. Please visit the store to find and rate it.</string>
+    <string name="apptentive_rating_message_fs">We\'re so happy to hear that you love %s! It\'d be really helpful if you rated us. Thanks so much for spending some time with us.</string>
+    <string name="apptentive_rating_provider_no_amazon_appstore">Amazon Appstore was not found. Please install Amazon Appstore before rating this app.</string>
+    <string name="apptentive_rating_provider_no_google_play">Google Play was not found. Please install Google Play before rating this app.</string>
+    <string name="apptentive_rating_provider_no_mikandi">MiKandi Market was not found. Please install MiKandi Market before rating this app.</string>
+    <string name="apptentive_rating_remind">Remind Me Later</string>
+    <string name="apptentive_required">Required</string>
+    <string name="apptentive_send">Send</string>
+    <string name="apptentive_sending">Sending…</string>
+    <string name="apptentive_skip">Skip</string>
+    <string name="apptentive_survey_header">Survey</string>
+    <string name="apptentive_survey_send_response">Send Response</string>
+    <string name="apptentive_survey_singleline_hint">Enter an answer…</string>
+    <string name="apptentive_thank_you">Thank You</string>
+    <string name="apptentive_thank_you_dialog_body">Your response has been saved in the Message Center, where you\'ll be able to view replies and send us other messages.</string>
+    <string name="apptentive_thank_you_dialog_body_message_center_disabled">Thank you for your feedback!</string>
+    <string name="apptentive_thank_you_dialog_body_message_center_disabled_email_required">We\'ll be in touch via email.</string>
+    <string name="apptentive_thank_you_dialog_close">Close</string>
+    <string name="apptentive_thank_you_dialog_view_messages">View Messages</string>
+    <string name="apptentive_thanks">Thanks!</string>
+    <string name="apptentive_version">Apptentive Version %s</string>
+    <string name="apptentive_were_sorry">We\'re Sorry!</string>
+    <string name="apptentive_yes">Yes</string>
+    <string name="apptentive_you">You</string>
+    <!-- From: file:/home/v4/dev/git-repos/tmd-android/apptentiveandroidsdk/src/main/res/values/styles.xml -->
+    <eat-comment />
+
+    <style name="Apptentive.Theme.Transparent" parent="android:Theme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/apptentive_activity_frame</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="ApptentiveInteractionAutoCompleteTextView" parent="ApptentiveInteractionEditText">
+        <item name="android:cursorVisible">true</item>
+    </style>
+
+    <style name="ApptentiveInteractionDialogBody">
+        <item name="android:textColor">@color/apptentive_dialog_body_text</item>
+        <item name="android:textSize">@dimen/apptentive_dialog_body_text</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:autoLink">all</item>
+    </style>
+
+    <style name="ApptentiveInteractionDialogTitle">
+        <item name="android:textColor">@color/apptentive_dialog_title_text</item>
+        <item name="android:textSize">@dimen/apptentive_dialog_title_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_vertical|left</item>
+    </style>
+
+    <style name="ApptentiveInteractionDialogTitleNoBody">
+        <item name="android:textColor">@color/apptentive_dialog_title_text</item>
+        <item name="android:textSize">@dimen/apptentive_dialog_title_text</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ApptentiveInteractionEditText">
+        <item name="android:background">@drawable/android_textfield_activated_holo_light</item>
+        <item name="android:textColor">@color/apptentive_dialog_form_text</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:gravity">bottom</item>
+item></style>
+
+    <style name="ApptentiveInteractionNegativeButton">
+        <item name="android:background">@drawable/apptentive_dialog_negative_button</item>
+        <item name="android:textColor">@drawable/apptentive_dialog_negative_button_text</item>
+        <item name="android:textSize">@dimen/apptentive_dialog_button_text</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="ApptentiveInteractionPositiveButton">
+        <item name="android:background">@drawable/apptentive_dialog_positive_button</item>
+        <item name="android:textColor">@drawable/apptentive_dialog_positive_button_text</item>
+        <item name="android:textSize">@dimen/apptentive_dialog_button_text</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+</resources>

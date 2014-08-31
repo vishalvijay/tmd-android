@@ -1,7 +1,6 @@
 package com.v4creations.tmd.view.activity;
 
 import android.accounts.AccountManager;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -27,7 +26,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends BaseActivity {
 
     private String mEmail, mToken;
     @InjectView(R.id.btnGooglePlus)
