@@ -12,10 +12,14 @@ public abstract class APICallback<T> implements Callback<T> {
     @Override
     public void success(T t, Response response) {
         String cookie = null;
+        boolean isFirstSetCookieFound = false;
         for (Header header : response.getHeaders()) {
             if (null != header.getName() && header.getName().equals("Set-Cookie")) {
-                cookie = header.getValue();
-                break;
+                if (isFirstSetCookieFound) {
+                    cookie = header.getValue();
+                    break;
+                } else
+                    isFirstSetCookieFound = true;
             }
         }
         Settings.setCookie(cookie);

@@ -17,14 +17,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.v4creations.tmd.R;
-import com.v4creations.tmd.controller.adapter.MenuListAdapter;
-import com.v4creations.tmd.model.NavMenuItem;
 
-import java.util.ArrayList;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class NavigationDrawerFragment extends Fragment {
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
@@ -67,6 +67,9 @@ public class NavigationDrawerFragment extends Fragment {
                              Bundle savedInstanceState) {
         mDrawerListView = (ListView) inflater.inflate(
                 R.layout.fragment_navigation_drawer, container, false);
+        View mainMenu = inflater.inflate(
+                R.layout.main_menu_header, mDrawerListView, false);
+        mDrawerListView.addHeaderView(mainMenu);
         mDrawerListView
                 .setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -76,17 +79,12 @@ public class NavigationDrawerFragment extends Fragment {
                     }
                 });
         mDrawerListView.setAdapter(getMenuAdapter());
-        selectItem(mCurrentSelectedPosition);
+        ButterKnife.inject(this, mainMenu);
         return mDrawerListView;
     }
 
     private ListAdapter getMenuAdapter() {
-        ArrayList<NavMenuItem> navMenuItems = new ArrayList<NavMenuItem>();
-
-        NavMenuItem navMenuItem = new NavMenuItem(getString(R.string.feedback),
-                R.drawable.ic_action_accept);
-        navMenuItems.add(navMenuItem);
-        return new MenuListAdapter(getActivity(), navMenuItems);
+        return new ArrayAdapter<String>(getActivity(), R.layout.item_main_menu, new String[]{getString(R.string.feedback), getString(R.string.rate_us), getString(R.string.about), getString(R.string.libraries), getString(R.string.logout)});
     }
 
     public boolean isDrawerOpen() {
@@ -151,9 +149,6 @@ public class NavigationDrawerFragment extends Fragment {
 
     private void selectItem(int position) {
         mCurrentSelectedPosition = position;
-        if (mDrawerListView != null) {
-            mDrawerListView.setItemChecked(position, true);
-        }
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);
         }
@@ -228,5 +223,17 @@ public class NavigationDrawerFragment extends Fragment {
          * Called when an item in the navigation drawer is selected.
          */
         void onNavigationDrawerItemSelected(int position);
+    }
+
+    @OnClick({R.id.tvHome, R.id.tvTalkToUs})
+    public void startLogin(View v) {
+        switch (v.getId()) {
+            case R.id.tvHome:
+                selectItem(-1);
+                break;
+            case R.id.tvTalkToUs:
+                selectItem(-2);
+                break;
+        }
     }
 }

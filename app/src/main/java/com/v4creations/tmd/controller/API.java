@@ -1,5 +1,6 @@
 package com.v4creations.tmd.controller;
 
+import com.v4creations.tmd.model.event.Logout;
 import com.v4creations.tmd.system.api.APICallback;
 import com.v4creations.tmd.system.api.APIEventError;
 import com.v4creations.tmd.system.api.RESTClient;
@@ -31,6 +32,27 @@ public class API {
             @Override
             public void complete() {
                 TMDEventBus.getBus().post(new EventCompleate<User>());
+            }
+        });
+    }
+
+    public static void logout(){
+        RESTClient.getService().logout(new APICallback<Logout>() {
+            @Override
+            public void success(Logout logout, Response response) {
+                super.success(logout, response);
+                TMDEventBus.getBus().post(new Logout());
+            }
+
+            @Override
+            public void failure(RetrofitError retrofitError) {
+                super.failure(retrofitError);
+                TMDEventBus.getBus().post(new APIEventError<Logout>(retrofitError));
+            }
+
+            @Override
+            public void complete() {
+                TMDEventBus.getBus().post(new EventCompleate<Logout>());
             }
         });
     }
