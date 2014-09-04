@@ -19,6 +19,8 @@ import java.util.List;
 public class ShareMessage extends SugarRecord<ShareMessage> {
     private String message, type, title, at;
 
+    public static String TYPE_BUY = "buy", TYPE_SELL = "sell";
+
     public ShareMessage() {
 
     }
@@ -27,7 +29,7 @@ public class ShareMessage extends SugarRecord<ShareMessage> {
         this.message = message;
         this.type = type;
         this.title = title;
-        this.at= at;
+        this.at = at;
     }
 
     public String getMessage() {
@@ -40,6 +42,10 @@ public class ShareMessage extends SugarRecord<ShareMessage> {
 
     public String getAt() {
         return at;
+    }
+
+    public boolean isBuy() {
+        return getType().equals(TYPE_BUY);
     }
 
     public static void loadShareMessages() {

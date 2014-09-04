@@ -1,6 +1,10 @@
 package com.v4creations.tmd.controller.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.BackgroundColorSpan;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -9,6 +13,7 @@ import com.v4creations.tmd.R;
 import com.v4creations.tmd.model.ShareMessage;
 
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -30,7 +35,17 @@ public class ShareMessageAdapter extends BaseArrayAdapter<ShareMessage> {
             convertView.setTag(holder);
         }
         ShareMessage shareMessage = getItem(position);
-        holder.message.setText(shareMessage.getMessage());
+        int color = Color.RED;
+        String word = ShareMessage.TYPE_SELL;
+        if (shareMessage.isBuy()) {
+            color = Color.GREEN;
+            word = ShareMessage.TYPE_BUY;
+        }
+        Spannable message = new SpannableString(shareMessage.getMessage());
+        int start = shareMessage.getMessage().toLowerCase(Locale.getDefault()).indexOf(word);
+        if (start != -1)
+            message.setSpan(new BackgroundColorSpan(color), start, start + word.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        holder.message.setText(message);
         return convertView;
     }
 
