@@ -78,7 +78,7 @@ public class Settings {
     }
 
     public static User getUser() {
-        String user = getInstance().getString(PREFS_COOKIE, null);
+        String user = getInstance().getString(PREFS_USER, null);
         if (user == null)
             return null;
         return new Gson().fromJson(user, User.class);

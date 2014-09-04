@@ -20,10 +20,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.squareup.otto.Produce;
+import com.squareup.otto.Subscribe;
 import com.v4creations.tmd.R;
+import com.v4creations.tmd.controller.API;
+import com.v4creations.tmd.model.User;
+import com.v4creations.tmd.system.event.TMDEventBus;
+import com.v4creations.tmd.utils.Settings;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import butterknife.OnClick;
 
 public class NavigationDrawerFragment extends Fragment {
@@ -40,6 +48,9 @@ public class NavigationDrawerFragment extends Fragment {
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
+    @InjectView(R.id.tvName)
+    TextView mNameTextView;
+
     public NavigationDrawerFragment() {
     }
 
@@ -54,6 +65,7 @@ public class NavigationDrawerFragment extends Fragment {
                     .getInt(STATE_SELECTED_POSITION);
             mFromSavedInstanceState = true;
         }
+        API.profile();
     }
 
     @Override
@@ -235,5 +247,27 @@ public class NavigationDrawerFragment extends Fragment {
                 selectItem(-2);
                 break;
         }
+    }
+
+    @Produce
+    public User getCurrentUser() {
+        return Settings.getUser();
+    }
+
+    @Subscribe
+    public void onProfileLoaded(User user) {
+        mNameTextView.setText(user.getName());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        TMDEventBus.getBus().register(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        TMDEventBus.getBus().unregister(this);
     }
 }

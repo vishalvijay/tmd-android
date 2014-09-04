@@ -5,7 +5,7 @@
     android:background="@android:color/white">
 
     <TextView
-        android:text="Vishal Vijay"
+        android:id="@+id/tvName"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:background="@drawable/profile_bg"

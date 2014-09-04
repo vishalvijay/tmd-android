@@ -48,7 +48,7 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        TMDEventBus.getBus().register(this);
+        TMDEventBus.getBus().unregister(this);
     }
 
     @OnClick(R.id.btnGooglePlus)

@@ -11,6 +11,6 @@ public class TMDRequestInterceptor implements RequestInterceptor {
         request.addHeader("Accept", "application/vnd.tmd+json;version=1");
         String cookie = Settings.getCookie();
         if (cookie != null)
-            request.addHeader("Set-Cookie", cookie);
+            request.addHeader("Cookie", cookie);
     }
 }
