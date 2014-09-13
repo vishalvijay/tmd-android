@@ -26,7 +26,8 @@ public abstract class APICallback<T> implements Callback<T> {
         complete();
     }
 
-    public abstract void complete();
+    public void complete(){
+    };
 
     @Override
     public void failure(RetrofitError retrofitError) {

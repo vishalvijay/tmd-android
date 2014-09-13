@@ -32,7 +32,6 @@ import com.v4creations.tmd.utils.Settings;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.OnClick;
 
 public class NavigationDrawerFragment extends Fragment {
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
@@ -235,18 +234,6 @@ public class NavigationDrawerFragment extends Fragment {
          * Called when an item in the navigation drawer is selected.
          */
         void onNavigationDrawerItemSelected(int position);
-    }
-
-    @OnClick({R.id.tvHome, R.id.tvTalkToUs})
-    public void startLogin(View v) {
-        switch (v.getId()) {
-            case R.id.tvHome:
-                selectItem(-1);
-                break;
-            case R.id.tvTalkToUs:
-                selectItem(-2);
-                break;
-        }
     }
 
     @Produce

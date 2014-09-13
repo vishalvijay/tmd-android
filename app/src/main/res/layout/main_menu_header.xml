@@ -16,26 +16,4 @@
         android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/tvHome"
-        android:padding="10dp"
-        android:gravity="center"
-        android:clickable="true"
-        android:textAppearance="?android:textAppearanceListItem"
-        android:text="@string/home"
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/tvTalkToUs"
-        android:clickable="true"
-        android:background="?android:attr/selectableItemBackground"
-        android:padding="10dp"
-        android:gravity="center"
-        android:textAppearance="?android:textAppearanceListItem"
-        android:text="@string/talk_to_us"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 </LinearLayout>

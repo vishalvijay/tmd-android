@@ -4,19 +4,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.IntentCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 
-import com.apptentive.android.sdk.Apptentive;
 import com.squareup.otto.Subscribe;
 import com.v4creations.tmd.R;
 import com.v4creations.tmd.controller.API;
+import com.v4creations.tmd.model.RssItem;
 import com.v4creations.tmd.model.event.Logout;
+import com.v4creations.tmd.system.api.APICallback;
 import com.v4creations.tmd.system.api.APIEventError;
 import com.v4creations.tmd.system.api.RESTClient;
+import com.v4creations.tmd.system.api.RssRESTClient;
 import com.v4creations.tmd.system.event.EventCompleate;
 import com.v4creations.tmd.system.event.TMDEventBus;
 import com.v4creations.tmd.utils.Settings;
 import com.v4creations.tmd.utils.SystemFeatureChecker;
 import com.v4creations.tmd.view.fragmet.NavigationDrawerFragment;
+
+import java.util.List;
+
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class TMDMainActivity extends BaseActivity implements
         NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -26,25 +34,31 @@ public class TMDMainActivity extends BaseActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tmd_main);
+        RssRESTClient.initialize(getApplicationContext());
         mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        RssRESTClient.getService().buzzingStocks(new APICallback<List<RssItem>>() {
+            @Override
+            public void success(List<RssItem> rssItems, Response response) {
+                super.success(rssItems, response);
+                for(RssItem rssItem : rssItems)
+                    Log.e("TAG", rssItem.getTitle());
+            }
+
+            @Override
+            public void failure(RetrofitError retrofitError) {
+                super.failure(retrofitError);
+                Log.e("TAG", retrofitError.getMessage());
+            }
+        });
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
-            Apptentive.engage(this, "init");
-        }
-    }
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         switch (position) {
-            case -2:
-                Apptentive.showMessageCenter(this);
-                break;
             case 1:
                 SystemFeatureChecker.sendFeedback(this);
                 break;
